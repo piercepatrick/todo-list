@@ -1,0 +1,21 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+#header {
+    /*background-color: blue; */
+    height: 30vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    
+}
+
+#headerh1 {
+    margin-right: 10vw;
+    font-size: 50px;
+    border-bottom: 8px solid #00e202;
+}
+
+
