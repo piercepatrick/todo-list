@@ -2,8 +2,12 @@
 // has properties name, tasks
 
 export class Project {
-    constructor(name, tasks) {
+    constructor(name) {
         this.name = name
+        this.tasks = []
+    }
+
+    setTasks(tasks) {
         this.tasks = tasks
     }
 
@@ -11,7 +15,16 @@ export class Project {
         return this.tasks
     }
 
+    getTask(taskName) {
+        return this.tasks.find((task) => task.getName() === taskName);
+      }
+
+    contains(taskName) {
+        return this.tasks.some((task) => task.getName() === taskName);
+    }
+
     addTask(task) {
+        if (this.tasks.indexOf(task) > 0) return;
         this.tasks.push(task)
     }
 
