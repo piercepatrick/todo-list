@@ -16,7 +16,7 @@
   \*******************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"UI\": () => (/* binding */ UI)\n/* harmony export */ });\n\r\n\r\nclass UI {\r\n    constructor() {\r\n\r\n    }\r\n\r\n    loadHomepage() {\r\n\r\n    }\r\n    \r\n    addTaskToScreen() {\r\n        \r\n    }\r\n\r\n    removeAddTaskBtn() {\r\n        let addTaskBtn = document.getElementById('button-add-task')\r\n        addTaskBtn.style.display = 'none !important'\r\n    }\r\n\r\n}\r\n\r\n\n\n//# sourceURL=webpack://todo-list/./src/UI.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"UI\": () => (/* binding */ UI)\n/* harmony export */ });\n\r\n\r\nclass UI {\r\n\r\n    loadHomepage() {\r\n        this.addListeners()\r\n        console.log('test')\r\n    }\r\n\r\n    addListeners() {\r\n        let addTaskBtn = document.getElementById('button-add-task')\r\n        let addProjectBtn = document.getElementById('button-add-project')\r\n\r\n        addTaskBtn.addEventListener('click', this.addTask)\r\n        addProjectBtn.addEventListener('click', this.addProject)\r\n\r\n    }\r\n\r\n\r\n    addTask() {\r\n        console.log('hi')\r\n    }\r\n\r\n    addProject() {\r\n\r\n    }\r\n\r\n\r\n    removeAddTaskBtn() {\r\n        let addTaskBtn = document.getElementById('button-add-task')\r\n        addTaskBtn.style.display = 'none !important'\r\n    }\r\n\r\n}\r\n\r\n\n\n//# sourceURL=webpack://todo-list/./src/UI.js?");
 
 /***/ }),
 
@@ -26,7 +26,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _UI_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UI.js */ \"./src/UI.js\");\n\r\n\r\n\r\ndocument.addEventListener('DOMContentLoaded', _UI_js__WEBPACK_IMPORTED_MODULE_0__.UI.loadHomepage)\r\n\n\n//# sourceURL=webpack://todo-list/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _UI_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UI.js */ \"./src/UI.js\");\n\r\n\r\nlet ui = new _UI_js__WEBPACK_IMPORTED_MODULE_0__.UI()\r\nui.loadHomepage()\n\n//# sourceURL=webpack://todo-list/./src/index.js?");
 
 /***/ })
 
