@@ -1,6 +1,7 @@
 let tasksDiv = document.getElementById('tasks-div')
 let addTaskBtn = document.getElementById('button-add-task')
 let addTaskContainer = document.createElement('div')
+let addProjectBtn = document.getElementById('button-add-project')
 
 class UI {
     
@@ -9,9 +10,6 @@ class UI {
     }
 
     static addListeners() {
-        /*let addTaskBtn = document.getElementById('button-add-task')*/
-        let addProjectBtn = document.getElementById('button-add-project')
-
         addTaskBtn.addEventListener('click', UI.displayAddTaskContainer)
         addProjectBtn.addEventListener('click', UI.addProject)
 
@@ -19,42 +17,53 @@ class UI {
 
 
     static displayAddTaskContainer() {
-
         addTaskBtn.style.display = 'none'
         tasksDiv.appendChild(addTaskContainer)
         addTaskContainer.innerHTML = `
-        <form id='addTaskForm'>
-            <label for="inputTask">Task:</label><br>
-            <input type="text" id="inputTask" name="inputTask"><br>
-            <label for="inputDueDate">Due Date:</label><br>
-            <input type="text" id="inputDueDate" name="inputDueDate">
+        <form action=''>
+            <label for="inputTask" >Task:</label><br>
+            <textarea name="textarea"></textarea><br>
+            <label for="inputDueDate" >Due Date:</label><br>
+            <input type="text" id="inputDueDate" name="inputDueDate"><br>
+            <input type='submit' value='Submit' class='taskContainerBtns' id='taskContainerAddBtn'>
+            <input type='button' value='Cancel' class='taskContainerBtns' id='taskContainerCancelBtn'>
         </form>
-        <button class='taskContainerBtns' id='taskContainerAddBtn'>Add</button>
-        <button class='taskContainerBtns' id='taskContainerCancelBtn'>Cancel</button>
         `
-    
+        
         UI.styleTaskContainer()
     }
 
     static styleTaskContainer() {
-        addTaskContainer.style.order = '1'
-    
+        addTaskContainer.style.order = '1'      
+
         let taskContainerAddBtn = document.getElementById('taskContainerAddBtn')
         let taskContainerCancelBtn= document.getElementById('taskContainerCancelBtn')
         taskContainerAddBtn.style.display = 'inline-block'
         taskContainerCancelBtn.style.display = 'inline-block'
-     
+        
+        taskContainerAddBtn.addEventListener('click', UI.addTaskToBoard)
+        
+        
+    
+    }
+
+    static addTaskToBoard(e) {
+        e.preventDefault()
+    }
+
+    static removeAddTaskContainer() {
+        addTaskContainer.style.display = 'none'
+
     }
 
     static addProject() {
 
     }
 
-
-    static removeAddTaskBtn() {
-        let addTaskBtn = document.getElementById('button-add-task')
-        addTaskBtn.style.display = 'none !important'
+    static showAddTaskBtn() {
+        addTaskBtn.style.display = 'block'
     }
+
 
 }
 
