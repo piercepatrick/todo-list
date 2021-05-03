@@ -1,16 +1,16 @@
 // to do items class
-// has properties title, description, dueDate, priority, 
+// has properties category, description, dueDate, priority, 
 
 export class Task {
-    constructor(title, description, dueDate, priority) {
-        this.title = title
+    constructor(category, description, dueDate, priority) {
+        this.category = category
         this.description = description
         this.dueDate = dueDate
         this.priority = priority
     }
 
-    setTitle(title) {
-        this.title = title
+    setCategory(category) {
+        this.category = category
     }
     
     setDescription(description) {
@@ -25,8 +25,8 @@ export class Task {
         this.priority = priority
     }
 
-    getTitle() {
-        return this.title
+    getCategory() {
+        return this.category
     }
 
     getDescription() {

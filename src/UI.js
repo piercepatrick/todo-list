@@ -1,3 +1,5 @@
+import { Task } from './task.js'
+
 let tasksDiv = document.getElementById('tasks-div')
 let addTaskBtn = document.getElementById('button-add-task')
 let addTaskContainer = document.createElement('div')
@@ -21,10 +23,18 @@ class UI {
         tasksDiv.appendChild(addTaskContainer)
         addTaskContainer.innerHTML = `
         <form action=''>
+            <label for="inputCategory" >Category:</label><br>
+            <input type="text" id="inputCategory" name="inputCategory"><br>
             <label for="inputTask" >Task:</label><br>
-            <textarea name="textarea"></textarea><br>
+            <textarea name="textarea" id='inputTask'></textarea><br>
             <label for="inputDueDate" >Due Date:</label><br>
-            <input type="text" id="inputDueDate" name="inputDueDate"><br>
+            <input type="date" id="inputDueDate" name="inputDueDate"><br>
+            <label for="inputPriority" >Priority:</label><br>
+            <select name="inputPriority" id="inputPriority">
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+            </select> <br>
             <input type='submit' value='Submit' class='taskContainerBtns' id='taskContainerAddBtn'>
             <input type='button' value='Cancel' class='taskContainerBtns' id='taskContainerCancelBtn'>
         </form>
@@ -48,7 +58,13 @@ class UI {
     }
 
     static addTaskToBoard(e) {
-        e.preventDefault()
+        //e.preventDefault()
+        let taskCategory = document.getElementById('inputCategory')
+        let taskDecription = document.getElementById('inputTask')
+        let taskDueDate = document.getElementById('inputDueDate')
+        let taskPriority = document.getElementById('inputPriority')
+        let task = new Task(taskCategory, taskDecription, taskDueDate, taskPriority)
+        
     }
 
     static removeAddTaskContainer() {
