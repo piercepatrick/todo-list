@@ -1,9 +1,7 @@
 import { UI } from './UI.js'
 
 
-
 //UI.loadHomepage()
-
 // Selectors
 const todoInput = document.querySelector('.todo-input')
 const todoButton = document.querySelector('.todo-button')
@@ -53,6 +51,7 @@ function deleteCheck(e) {
         const todo = item.parentElement
         // ANIMATION
         todo.classList.add('fall')
+        removeLocalTodo(todo)
         todo.addEventListener('transitionend', function() {
             todo.remove()
         })
@@ -98,7 +97,8 @@ function filterTodo(e) {
 
 function saveLocalTodos(todo) {
     // CHECK IF TODOS ARE ALREADY SAVED
-    if (localStorage.getItem('todos') === null) {
+    let todos
+    if (localStorage.getItem("todos") === null) {
         todos = []
     }
     else  {
@@ -139,4 +139,18 @@ function getTodos() {
         // APPEND TO LIST
         todoList.appendChild(todoDiv)
     })
+}
+
+function removeLocalTodo(todo) {
+    let todos
+    if (localStorage.getItem("todos") === null) {
+        todos = []
+    }
+    else  {
+        todos = JSON.parse(localStorage.getItem("todos"))
+    }
+
+    const toDoIndex = todos.indexOf(todo.children[0].innerText)
+    todos.splice(toDoIndex, 1)
+    localStorage.setItem('todos', JSON.stringify(todos))
 }
