@@ -1,67 +1,42 @@
 body {
     font-family: 'Montserrat', sans-serif;
+    background-image: linear-gradient(90deg, #636363, #a2ab58);
+    color: white;
+    min-height: 100vh;
 }
 
-#header {
-    height: 20vh;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    font-size: 1.25rem;
+}
+
+header, form {
+    min-height: 20vh;
     display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    /*border-bottom: 8px solid #00e202;*/
 }
 
-#headerh1 {
-    flex-grow: 1;
-    font-size: 50px;
-    text-align: center;
-}
-
-
-main {
-    background-color: rgb(182, 182, 182);
-    display: flex;
-    background-color: white;
-    height: 100vh;
-}
-
-
-.nav {
-    background-color: rgb(182, 182, 182);
-    display: flex;
-    order: 1;
-    flex-direction: column;
-    align-items: center;
-    flex-grow: .5;
-}
-
-button {
-    display: block;
-    padding: 1rem;
+form input, form button {
+    padding: 0.5rem;
+    font-size: 2rem;
     border: none;
-    border-radius: 5px;
-    color: inherit;
-    font-family: inherit;
-    font-size: inherit;
+    background: white;
+}
+
+form button {
+    color: #a2ab58;
+    background: white;
     cursor: pointer;
-    outline: none;
+    transition: all 0.3s ease;
 }
 
-#tasks-div {
-    background-color: rgb(255, 255, 255);
-    order:2;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#add-tasks-header {
-    order: 1;
-    text-align: center;
-}
-
-
-#button-add-task {
-    order: 2
+form button:hover {
+    background: #a2ab58;
+    color: white;
 }
