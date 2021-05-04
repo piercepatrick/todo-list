@@ -113,7 +113,7 @@ select {
 }
 
 select {
-    color: #a2ab58;
+    color: black;
     width: 10rem;
     cursor: pointer;
     padding: 1rem;
@@ -127,4 +127,10 @@ select {
     right: 0;
     padding: 1rem;
     pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.select:hover::after {
+    background: #a2ab58;
+    color: white;
 }
