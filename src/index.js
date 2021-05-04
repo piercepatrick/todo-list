@@ -1,3 +1,9 @@
 import { UI } from './UI.js'
 
-UI.loadHomepage()
+//UI.loadHomepage()
+
+// Selectors
+const todoInput = document.querySelector('.todo-input')
+// Event Listeners
+
+// Functions

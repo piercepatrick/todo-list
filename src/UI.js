@@ -1,4 +1,5 @@
 import { Task } from './task.js'
+import { Project } from './project.js'
 
 let tasksDiv = document.getElementById('tasks-div')
 let addTaskBtn = document.getElementById('button-add-task')
@@ -51,20 +52,21 @@ class UI {
         taskContainerAddBtn.style.display = 'inline-block'
         taskContainerCancelBtn.style.display = 'inline-block'
         
-        taskContainerAddBtn.addEventListener('click', UI.addTaskToBoard)
+        taskContainerAddBtn.addEventListener('click', UI.addTaskToProject)
         
         
     
     }
 
-    static addTaskToBoard(e) {
+    static addTaskToProject(e) {
         //e.preventDefault()
         let taskCategory = document.getElementById('inputCategory')
         let taskDecription = document.getElementById('inputTask')
         let taskDueDate = document.getElementById('inputDueDate')
         let taskPriority = document.getElementById('inputPriority')
         let task = new Task(taskCategory, taskDecription, taskDueDate, taskPriority)
-        
+        let defaultProject = new Project('default')
+        defaultProject.addTask(task)
     }
 
     static removeAddTaskContainer() {
