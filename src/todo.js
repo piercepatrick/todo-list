@@ -1,7 +1,7 @@
 // to do items class
 // has properties category, description, dueDate, priority, 
 
-export class Task {
+export class Todo {
     constructor(category, description, dueDate, priority) {
         this.category = category
         this.description = description
