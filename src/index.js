@@ -13,3 +13,10 @@ todoButton.addEventListener('click', UI.addTodo)
 todoList.addEventListener('click', UI.deleteCheck)
 filterOption.addEventListener('click', UI.filterTodo)
 
+// TO DO:
+// When a todo is added to UI, also make object of it. Make save local todos save the list of objects
+// After getting all todos situated, add different projects in 
+//
+//
+//
+

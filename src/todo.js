@@ -1,16 +1,17 @@
 // to do items class
-// has properties category, description, dueDate, priority, 
+// has properties isCompleted, description, dueDate, priority, 
 
 export class Todo {
-    constructor(category, description, dueDate, priority) {
-        this.category = category
+    constructor(id,description,isCompleted,dueDate, priority) {
+        this.id = id
         this.description = description
+        this.isCompleted = isCompleted
         this.dueDate = dueDate
         this.priority = priority
     }
 
-    setCategory(category) {
-        this.category = category
+    setcompleted(isCompleted) {
+        this.isCompleted = isCompleted
     }
     
     setDescription(description) {
@@ -25,8 +26,8 @@ export class Todo {
         this.priority = priority
     }
 
-    getCategory() {
-        return this.category
+    getcompleted() {
+        return this.isCompleted
     }
 
     getDescription() {

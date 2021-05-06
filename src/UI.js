@@ -2,7 +2,7 @@ import { Todo } from './todo.js'
 import { Project } from './project.js'
 import { Storage } from './storage.js'
 import { todoInput, todoButton, todoList, filterOption } from './index.js'
-
+let i = "0"
 class UI {
     
     static addTodo(event) {
@@ -15,8 +15,28 @@ class UI {
         newTodo.innerText = todoInput.value
         newTodo.classList.add('todo-item')
         todoDiv.appendChild(newTodo)
+
+
+        // CREATE TODO OBJECT
+        let todoObject = new Todo(i, todoInput.value, false, "Set Due Date", "High")
         // SAVE TODO TO LOCAL STORAGE
-        Storage.saveLocalTodos(todoInput.value)
+        Storage.saveLocalTodos(todoObject)
+        // DUE DATE 
+        const dueDateInput = document.createElement('h6')
+        dueDateInput.innerText = todoObject.dueDate
+        dueDateInput.classList.add('duedate-input')
+        todoDiv.appendChild(dueDateInput)
+        // PRIORITY DROPDOWN
+        const priorityDropdown = document.createElement('select')
+        priorityDropdown.innerHTML = `
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+        `
+        priorityDropdown.classList.add('priority-dropdown')
+        priorityDropdown.setAttribute("id", i)
+        todoDiv.appendChild(priorityDropdown)
+
         // CHECK MARK BUTTON
         const completedButton = document.createElement('button')
         completedButton.innerHTML = '<i class="fas fa-check"></i>'
@@ -26,22 +46,42 @@ class UI {
         const trashButton = document.createElement('button')
         trashButton.innerHTML = '<i class="fas fa-trash"></i>'
         trashButton.className = 'trash-btn'
+        trashButton.setAttribute("id", i)
         todoDiv.appendChild(trashButton)
         // APPEND TO LIST
         todoList.appendChild(todoDiv)
         // CLEAR todoInput VALUE
         todoInput.value = ''
+
+        // need id for both priority dropdown and id for object
+        // ADD LISTENER TO PRIORITY DROPDOWN
+        
+        priorityDropdown.addEventListener('change', function(e) {
+            console.log('hi')
+
+            let todos
+            let priorityID = e.target.id
+            todos = JSON.parse(localStorage.getItem("todos"))
+            todos.find(x => x.id === priorityID).priority = this.value
+            localStorage.setItem('todos', JSON.stringify(todos))
+        }, false)
+        i = parseInt(i)
+        i++
+        i = i.toString()
+
     }
 
     static deleteCheck(e) {
         const item = e.target
-
+        
         // DELETE TODO
         if (item.classList[0] === 'trash-btn') {
             const todo = item.parentElement
+            let todoID = item.id
+            
             // ANIMATION
             todo.classList.add('fall')
-            Storage.removeLocalTodo(todo)
+            Storage.removeLocalTodo(todo, todoID)
             todo.addEventListener('transitionend', function() {
                 todo.remove()
             })
@@ -52,7 +92,9 @@ class UI {
         if (item.classList[0] === 'complete-btn') {
             const todo = item.parentElement
             todo.classList.toggle('completed')
+
         }
+
     }
 
     static filterTodo(e) {
