@@ -1,6 +1,6 @@
 body {
     font-family: 'Montserrat', sans-serif;
-    background-image: linear-gradient(90deg, #636363, #a2ab58);
+    background: #7f8360;
     color: white;
     min-height: 100vh;
 }
@@ -29,6 +29,8 @@ form input, form button {
     background: white;
 }
 
+
+
 form button {
     color: #a2ab58;
     background: white;
@@ -48,7 +50,7 @@ form button:hover {
 }
 
 .todo-list {
-    min-width: 30%;
+    min-width: 38%;
     list-style: none;
 }
 
@@ -59,12 +61,13 @@ form button:hover {
     font-size: 1.5rem;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+   
     transition: all 0.5s ease;
 }
 
 .todo li {
     flex: 1;
+    
 }
 
 .trash-btn, .complete-btn {
@@ -133,4 +136,18 @@ select {
 .select:hover::after {
     background: #a2ab58;
     color: white;
+}
+
+.priority-dropdown {
+    background: #d65353d5;
+    color: white;
+    cursor: pointer;
+    width: auto;
+
+}
+
+.duedate-input {
+    display: flex;
+    align-items: center;
+    background: rgb(140, 213, 235);
 }
