@@ -15,8 +15,8 @@ filterOption.addEventListener('click', UI.filterTodo)
 
 
 // TO DO:
-// due date
-// change Due date in object when its clicked using ids
+// when todos load, load in priority and due date
+// 
 // After getting all todos situated, add different projects in 
 //
 //

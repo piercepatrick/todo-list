@@ -26,9 +26,13 @@ export class Storage {
             // TODO OBJECT CHANGE ID
             todo.id = i  
             // DUE DATE 
-            const dueDateInput = document.createElement('h6')
-            dueDateInput.innerText = todo.dueDate
+            const dueDateInput = document.createElement('input')
+            dueDateInput.type = 'date'
+            if (todo.dueDate != 'Set Due Date') {
+                dueDateInput.value = todo.dueDate
+            }
             dueDateInput.classList.add('duedate-input')
+            dueDateInput.setAttribute("id", i)
             todoDiv.appendChild(dueDateInput)
             // PRIORITY DROPDOWN
             const priorityDropdown = document.createElement('select')
@@ -60,7 +64,8 @@ export class Storage {
                 todos = JSON.parse(localStorage.getItem("todos"))
                 todos.find(x => x.id === priorityID).priority = this.value
                 localStorage.setItem('todos', JSON.stringify(todos))
-            }, false)   
+            }, false)
+   
             i = parseInt(i)
             i++
             i = i.toString()

@@ -28,10 +28,8 @@ class UI {
         // DUE DATE 
         const dueDateInput = document.createElement('input')
         dueDateInput.type = 'date'
-        //dueDateInput.innerText = todoObject.dueDate
         dueDateInput.classList.add('duedate-input')
         dueDateInput.setAttribute("id", i)
-
         todoDiv.appendChild(dueDateInput)
         // PRIORITY DROPDOWN
         const priorityDropdown = document.createElement('select')
