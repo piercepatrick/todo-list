@@ -15,7 +15,8 @@ filterOption.addEventListener('click', UI.filterTodo)
 
 
 // TO DO:
-// When a todo is added to UI, also make object of it. Make save local todos save the list of objects
+// due date
+// change Due date in object when its clicked using ids
 // After getting all todos situated, add different projects in 
 //
 //

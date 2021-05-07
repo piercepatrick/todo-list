@@ -26,9 +26,12 @@ class UI {
         // SAVE TODO TO LOCAL STORAGE
         Storage.saveLocalTodos(todoObject)
         // DUE DATE 
-        const dueDateInput = document.createElement('h6')
-        dueDateInput.innerText = todoObject.dueDate
+        const dueDateInput = document.createElement('input')
+        dueDateInput.type = 'date'
+        //dueDateInput.innerText = todoObject.dueDate
         dueDateInput.classList.add('duedate-input')
+        dueDateInput.setAttribute("id", i)
+
         todoDiv.appendChild(dueDateInput)
         // PRIORITY DROPDOWN
         const priorityDropdown = document.createElement('select')
@@ -57,18 +60,26 @@ class UI {
         // CLEAR todoInput VALUE
         todoInput.value = ''
 
-        // need id for both priority dropdown and id for object
-        // ADD LISTENER TO PRIORITY DROPDOWN
         
+        // ADD LISTENER TO PRIORITY DROPDOWN
         priorityDropdown.addEventListener('change', function(e) {
-            console.log('hi')
-
             let todos
             let priorityID = e.target.id
             todos = JSON.parse(localStorage.getItem("todos"))
             todos.find(x => x.id === priorityID).priority = this.value
             localStorage.setItem('todos', JSON.stringify(todos))
         }, false)
+   
+        // ADD LISTENER TO DUE DATE
+        dueDateInput.addEventListener('change', function(e) {
+            let todos
+            let dueDateID = e.target.id
+            todos = JSON.parse(localStorage.getItem("todos"))
+            todos.find(x => x.id === dueDateID).dueDate = this.value
+            localStorage.setItem('todos', JSON.stringify(todos))
+        }, false)
+        
+        // INCREMENT i
         i = parseInt(i)
         i++
         i = i.toString()
