@@ -115,7 +115,7 @@ select {
     overflow: hidden;
 }
 
-select {
+.filter-todo {
     color: black;
     width: 10rem;
     cursor: pointer;
@@ -151,3 +151,60 @@ select {
     align-items: center;
     background: rgb(140, 213, 235);
 }
+
+#select-project-h2 {
+    display: flex;
+    justify-content: center;
+}
+
+.s {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.s::after {
+    content: "\25BC";
+    background: #636363;
+    padding: 1rem;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    cursor: pointer;
+}
+
+.s:hover::after {
+    background: #a2ab58;
+    color: white;
+}
+
+.filter-projects {
+    color: black;
+    width: 10rem;
+    cursor: pointer;
+    padding: 1rem;
+}
+
+.project-menu {
+    min-height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.project-buttons {
+    border: none;
+	background-color:#4c5752;
+	border-radius:28px;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:16px 31px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+    margin-top: 1%;
+}
+.myButton:hover {
+	background-color:#5cbf2a;
+}
+
