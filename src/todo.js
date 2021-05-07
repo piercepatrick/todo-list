@@ -10,6 +10,10 @@ export class Todo {
         this.priority = priority
     }
 
+    setID(id) {
+        this.id = id
+    }
+
     setcompleted(isCompleted) {
         this.isCompleted = isCompleted
     }
@@ -26,6 +30,10 @@ export class Todo {
         this.priority = priority
     }
 
+    getID() {
+        return this.id
+    }
+    
     getcompleted() {
         return this.isCompleted
     }

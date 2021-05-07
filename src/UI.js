@@ -3,10 +3,14 @@ import { Project } from './project.js'
 import { Storage } from './storage.js'
 import { todoInput, todoButton, todoList, filterOption } from './index.js'
 let i = "0"
+export { i }
 class UI {
     
     static addTodo(event) {
         event.preventDefault()
+
+        // make i last  objects id + 1
+
         // Todo Div
         const todoDiv = document.createElement('div')
         todoDiv.classList.add('todo')
