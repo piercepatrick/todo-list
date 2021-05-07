@@ -41,6 +41,7 @@ export class Storage {
                 <option value="Medium">Medium</option>
                 <option value="Low">Low</option>
             `
+            priorityDropdown.value = todo.priority
             priorityDropdown.classList.add('priority-dropdown')
             priorityDropdown.setAttribute("id", i)
             todoDiv.appendChild(priorityDropdown)
