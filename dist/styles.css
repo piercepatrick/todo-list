@@ -208,3 +208,14 @@ select {
 	background-color:#5cbf2a;
 }
 
+.add-project-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2%;
+    height: 5vh;
+}
+
+.input-project-text-bar {
+    height: 100%;
+}

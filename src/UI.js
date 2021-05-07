@@ -1,7 +1,7 @@
 import { Todo } from './todo.js'
 import { Project } from './project.js'
 import { Storage } from './storage.js'
-import { todoInput, todoButton, todoList, filterOption } from './index.js'
+import { todoInput, todoButton, todoList, filterOption, filterProject, projectMenuDiv, addProjectDiv } from './index.js'
 let i = "0"
 export { i }
 class UI {
@@ -146,10 +146,15 @@ class UI {
     }
 
     static filterProjects() {
-        console.log('test')
+        
     }
 
-
+    static addProject() {
+        const inputProjectTextBar = document.createElement('input')
+        inputProjectTextBar.type = 'text'
+        addProjectDiv.appendChild(inputProjectTextBar)
+        inputProjectTextBar.classList.add('input-project-text-bar')
+    }
 
 }
 
