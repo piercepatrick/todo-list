@@ -46,6 +46,7 @@ class UI {
         const completedButton = document.createElement('button')
         completedButton.innerHTML = '<i class="fas fa-check"></i>'
         completedButton.className = 'complete-btn'
+        completedButton.setAttribute("id", i)
         todoDiv.appendChild(completedButton)
         // TRASH BUTTON
         const trashButton = document.createElement('button')
@@ -76,13 +77,14 @@ class UI {
             todos.find(x => x.id === dueDateID).dueDate = this.value
             localStorage.setItem('todos', JSON.stringify(todos))
         }, false)
-        
+
         // INCREMENT i
         i = parseInt(i)
         i++
         i = i.toString()
 
     }
+
 
     static deleteCheck(e) {
         const item = e.target
@@ -100,14 +102,18 @@ class UI {
             })
             
         }
-    
+
         // CHECK MARK
         if (item.classList[0] === 'complete-btn') {
             const todo = item.parentElement
+            console.log(todo)
             todo.classList.toggle('completed')
-
+            let todos
+            let isCompletedID = item.id
+            todos = JSON.parse(localStorage.getItem("todos"))
+            todos.find(x => x.id === isCompletedID).isCompleted = true
+            localStorage.setItem('todos', JSON.stringify(todos))
         }
-
     }
 
     static filterTodo(e) {

@@ -13,7 +13,6 @@ todoButton.addEventListener('click', UI.addTodo)
 todoList.addEventListener('click', UI.deleteCheck)
 filterOption.addEventListener('click', UI.filterTodo)
 
-
 // TO DO:
 // when todos load, load in priority and due date
 // 

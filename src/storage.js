@@ -49,6 +49,7 @@ export class Storage {
             const completedButton = document.createElement('button')
             completedButton.innerHTML = '<i class="fas fa-check"></i>'
             completedButton.className = 'complete-btn'
+            completedButton.setAttribute("id", i)
             todoDiv.appendChild(completedButton)
             // TRASH BUTTON
             const trashButton = document.createElement('button')
@@ -58,6 +59,12 @@ export class Storage {
             todoDiv.appendChild(trashButton)
             // APPEND TO LIST
             todoList.appendChild(todoDiv)
+
+            // ADD LINE THROUGH TODO ITEM IF COMPLETED
+            if (todo.isCompleted == true) {
+                todoDiv.classList.toggle('completed')
+            }
+            
             // ADD LISTENER TO PRIORITY DROPDOWN 
             priorityDropdown.addEventListener('change', function(e) {
                 let todos
