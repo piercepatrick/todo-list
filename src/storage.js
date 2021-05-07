@@ -59,12 +59,10 @@ export class Storage {
             todoDiv.appendChild(trashButton)
             // APPEND TO LIST
             todoList.appendChild(todoDiv)
-
             // ADD LINE THROUGH TODO ITEM IF COMPLETED
             if (todo.isCompleted == true) {
                 todoDiv.classList.toggle('completed')
             }
-            
             // ADD LISTENER TO PRIORITY DROPDOWN 
             priorityDropdown.addEventListener('change', function(e) {
                 let todos
@@ -73,7 +71,7 @@ export class Storage {
                 todos.find(x => x.id === priorityID).priority = this.value
                 localStorage.setItem('todos', JSON.stringify(todos))
             }, false)
-   
+            // INCREMENT i
             i = parseInt(i)
             i++
             i = i.toString()

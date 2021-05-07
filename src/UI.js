@@ -40,7 +40,7 @@ class UI {
         `
         priorityDropdown.classList.add('priority-dropdown')
         priorityDropdown.setAttribute("id", i)
-        todoDiv.appendChild(priorityDropdown)
+        todoDiv.appendChild(priorityDropdown) 
 
         // CHECK MARK BUTTON
         const completedButton = document.createElement('button')
@@ -143,6 +143,10 @@ class UI {
                 
             } 
         })
+    }
+
+    static filterProjects() {
+        console.log('test')
     }
 
 
