@@ -8,9 +8,6 @@ class UI {
     
     static addTodo(event) {
         event.preventDefault()
-
-        // make i last  objects id + 1
-
         // Todo Div
         const todoDiv = document.createElement('div')
         todoDiv.classList.add('todo')
@@ -19,10 +16,9 @@ class UI {
         newTodo.innerText = todoInput.value
         newTodo.classList.add('todo-item')
         todoDiv.appendChild(newTodo)
-
-
         // CREATE TODO OBJECT
-        let todoObject = new Todo(i, todoInput.value, false, "Set Due Date", "High")
+        console.log(filterProject.value)
+        let todoObject = new Todo(i, todoInput.value, false, "Set Due Date", "High", filterProject.value)
         // SAVE TODO TO LOCAL STORAGE
         Storage.saveLocalTodos(todoObject)
         // DUE DATE 
@@ -41,7 +37,6 @@ class UI {
         priorityDropdown.classList.add('priority-dropdown')
         priorityDropdown.setAttribute("id", i)
         todoDiv.appendChild(priorityDropdown) 
-
         // CHECK MARK BUTTON
         const completedButton = document.createElement('button')
         completedButton.innerHTML = '<i class="fas fa-check"></i>'
@@ -58,8 +53,6 @@ class UI {
         todoList.appendChild(todoDiv)
         // CLEAR todoInput VALUE
         todoInput.value = ''
-
-        
         // ADD LISTENER TO PRIORITY DROPDOWN
         priorityDropdown.addEventListener('change', function(e) {
             let todos
@@ -68,7 +61,6 @@ class UI {
             todos.find(x => x.id === priorityID).priority = this.value
             localStorage.setItem('todos', JSON.stringify(todos))
         }, false)
-   
         // ADD LISTENER TO DUE DATE
         dueDateInput.addEventListener('change', function(e) {
             let todos
@@ -77,12 +69,10 @@ class UI {
             todos.find(x => x.id === dueDateID).dueDate = this.value
             localStorage.setItem('todos', JSON.stringify(todos))
         }, false)
-
         // INCREMENT i
         i = parseInt(i)
         i++
         i = i.toString()
-
     }
 
 

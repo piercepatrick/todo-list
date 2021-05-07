@@ -1,13 +1,11 @@
-// to do items class
-// has properties isCompleted, description, dueDate, priority, 
-
 export class Todo {
-    constructor(id,description,isCompleted,dueDate, priority) {
+    constructor(id,description,isCompleted,dueDate, priority, project) {
         this.id = id
         this.description = description
         this.isCompleted = isCompleted
         this.dueDate = dueDate
         this.priority = priority
+        this.project = project
     }
 
     setID(id) {

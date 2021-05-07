@@ -5,7 +5,6 @@ import { Todo } from './todo.js'
 export class Storage {
 
     static getTodos() {
-        
         let todos
         if (localStorage.getItem("todos") === null) {
             todos = []
@@ -15,6 +14,9 @@ export class Storage {
         }
         let i = "0"
         todos.forEach(function(todo) {
+            // TODO OBJECT CHANGE ID
+            todo.id = i 
+            if (todo.project == 'Default Project') {
             // Todo Div
             const todoDiv = document.createElement('div')
             todoDiv.classList.add('todo')
@@ -22,9 +24,7 @@ export class Storage {
             const newTodo = document.createElement('li')
             newTodo.innerText = todo.description
             newTodo.classList.add('todo-item')
-            todoDiv.appendChild(newTodo)
-            // TODO OBJECT CHANGE ID
-            todo.id = i  
+            todoDiv.appendChild(newTodo) 
             // DUE DATE 
             const dueDateInput = document.createElement('input')
             dueDateInput.type = 'date'
@@ -63,6 +63,7 @@ export class Storage {
             if (todo.isCompleted == true) {
                 todoDiv.classList.toggle('completed')
             }
+        
             // ADD LISTENER TO PRIORITY DROPDOWN 
             priorityDropdown.addEventListener('change', function(e) {
                 let todos
@@ -71,6 +72,8 @@ export class Storage {
                 todos.find(x => x.id === priorityID).priority = this.value
                 localStorage.setItem('todos', JSON.stringify(todos))
             }, false)
+            
+        }
             // INCREMENT i
             i = parseInt(i)
             i++
@@ -99,7 +102,6 @@ export class Storage {
         else  {
             todos = JSON.parse(localStorage.getItem("todos"))
         }
-        
         const toDoIndex = todos.map(function(x) {return x.id; }).indexOf(todoID);
         todos.splice(toDoIndex, 1)
         localStorage.setItem('todos', JSON.stringify(todos))
