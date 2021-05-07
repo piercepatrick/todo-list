@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', Storage.getTodos)
 todoButton.addEventListener('click', UI.addTodo)
 todoList.addEventListener('click', UI.deleteCheck)
 filterOption.addEventListener('click', UI.filterTodo)
-filterProject.addEventListener('click', UI.filterProjects)
+filterProject.addEventListener('change', UI.filterProjects)
 addProjectBtn.addEventListener('click', UI.addProject)
 // TO DO:
 // 
@@ -24,8 +24,8 @@ addProjectBtn.addEventListener('click', UI.addProject)
 // Projects:
 // Load in on default project
 // 
-//  each todo has property called project
-// on load in, load in all objects in default
+//  
+// 
 // load in all projects into select bar
 //
 // 

@@ -17,7 +17,6 @@ class UI {
         newTodo.classList.add('todo-item')
         todoDiv.appendChild(newTodo)
         // CREATE TODO OBJECT
-        console.log(filterProject.value)
         let todoObject = new Todo(i, todoInput.value, false, "Set Due Date", "High", filterProject.value)
         // SAVE TODO TO LOCAL STORAGE
         Storage.saveLocalTodos(todoObject)
@@ -49,6 +48,7 @@ class UI {
         trashButton.className = 'trash-btn'
         trashButton.setAttribute("id", i)
         todoDiv.appendChild(trashButton)
+        todoDiv.setAttribute("id", i)
         // APPEND TO LIST
         todoList.appendChild(todoDiv)
         // CLEAR todoInput VALUE
@@ -74,7 +74,6 @@ class UI {
         i++
         i = i.toString()
     }
-
 
     static deleteCheck(e) {
         const item = e.target
@@ -135,8 +134,33 @@ class UI {
         })
     }
 
-    static filterProjects() {
+    static filterProjects(e) {
+        const projectName = e.target.value
         
+
+        
+  
+        let todos
+        if (localStorage.getItem("todos") === null) {
+            todos = []
+        }
+        else  {
+            todos = JSON.parse(localStorage.getItem("todos"))
+        }
+
+        todos.forEach(function(todo) {
+            let Objectid = todo.id
+            let todoDivID = document.getElementById(Objectid)
+            if (todo.project == projectName) {
+
+                todoDivID.style.display = 'flex'
+            }
+            else {
+                todoDivID.style.display = 'none'
+                
+            }
+            
+        })
     }
 
     static addProject() {

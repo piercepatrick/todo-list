@@ -57,6 +57,7 @@ export class Storage {
             trashButton.className = 'trash-btn'
             trashButton.setAttribute("id", i)
             todoDiv.appendChild(trashButton)
+            todoDiv.setAttribute("id", i)
             // APPEND TO LIST
             todoList.appendChild(todoDiv)
             // ADD LINE THROUGH TODO ITEM IF COMPLETED
