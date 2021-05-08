@@ -1,9 +1,10 @@
 import { Todo } from './todo.js'
-import { Project } from './project.js'
-import { Storage } from './storage.js'
-import { todoInput, todoButton, todoList, filterOption, filterProject, projectMenuDiv, addProjectDiv } from './index.js'
-let i = "0"
+import { Storage, loadTodos } from './storage.js'
+import { todoInput,  todoList,  filterProject,  addProjectDiv } from './index.js'
 export { i }
+
+let i = "0"
+
 class UI {
     
     static addTodo(event) {
@@ -77,19 +78,16 @@ class UI {
 
     static deleteCheck(e) {
         const item = e.target
-        
         // DELETE TODO
         if (item.classList[0] === 'trash-btn') {
             const todo = item.parentElement
             let todoID = item.id
-            
             // ANIMATION
             todo.classList.add('fall')
             Storage.removeLocalTodo(todoID)
             todo.addEventListener('transitionend', function() {
                 todo.remove()
             })
-            
         }
 
         // CHECK MARK
@@ -107,13 +105,7 @@ class UI {
 
     static filterTodo(e) {
         const projectName = filterProject.value
-        let todos
-        if (localStorage.getItem("todos") === null) {
-            todos = []
-        }
-        else  {
-            todos = JSON.parse(localStorage.getItem("todos"))
-        }
+        let todos = loadTodos()
         todos.forEach(function(todo) {
             if (todo.project == projectName) {
                 let todoDivID
@@ -139,8 +131,6 @@ class UI {
                             todoDivID.style.display = 'none'
                         }
                         break
-                    
-                    
                 }
             }
         })
@@ -148,13 +138,7 @@ class UI {
 
     static filterProjects(e) {
         const projectName = e.target.value
-        let todos
-        if (localStorage.getItem("todos") === null) {
-            todos = []
-        }
-        else  {
-            todos = JSON.parse(localStorage.getItem("todos"))
-        }
+        let todos = loadTodos()
         todos.forEach(function(todo) {
             let todoDivID
             let Objectid = todo.id
@@ -188,13 +172,7 @@ class UI {
             inputProjectTextBar.remove()
             inputProjectBtn.remove()
             cancelInputProjectBtn.remove()
-            let todos
-            if (localStorage.getItem("todos") === null) {
-                todos = []
-            }
-            else  {
-                todos = JSON.parse(localStorage.getItem("todos"))
-            }
+            let todos = loadTodos()
             todos.forEach(function(todo) {
                 let todoDivID
                 let Objectid = todo.id
@@ -229,12 +207,22 @@ class UI {
                     filterProject.remove(j);
                     Storage.deleteProjectTodos(projectToDelete)
             }
+            let projectName = filterProject.value
+            let todos = loadTodos()
+            todos.forEach(function(todo) {
+                let todoDivID
+                let Objectid = todo.id
+                todoDivID = document.getElementById(Objectid)
+                if (todo.project == projectName) {
+                    todoDivID.style.display = 'flex'
+                }
+                else {
+                    todoDivID.style.display = 'none'                
+                }  
+            })
+
         }
-        
-        
-
     }
-
 }
 
 export { UI }

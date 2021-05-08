@@ -1,6 +1,3 @@
-// class project
-// has properties name, tasks
-
 export class Project {
     constructor(name) {
         this.name = name

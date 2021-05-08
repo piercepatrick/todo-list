@@ -1,16 +1,20 @@
-import { todoInput, todoButton, todoList, filterOption, filterProject } from './index.js'
-import { Todo } from './todo.js'
+import {  todoList, filterProject } from './index.js'
+
+export function loadTodos() {
+    let todos
+    if (localStorage.getItem("todos") === null) {
+        todos = []
+    }
+    else  {
+        todos = JSON.parse(localStorage.getItem("todos"))
+    }
+    return todos
+}
 
 export class Storage {
-
+    
     static getTodos() {
-        let todos
-        if (localStorage.getItem("todos") === null) {
-            todos = []
-        }
-        else  {
-            todos = JSON.parse(localStorage.getItem("todos"))
-        }
+        let todos = loadTodos()
         let i = "0"
         todos.forEach(function(todo) {
             // TODO OBJECT CHANGE ID
@@ -74,7 +78,6 @@ export class Storage {
                 newProjectOption.innerText = todo.project
                 filterProject.appendChild(newProjectOption)
             }
-        
             // ADD LISTENER TO PRIORITY DROPDOWN 
             priorityDropdown.addEventListener('change', function(e) {
                 let todos
@@ -84,7 +87,7 @@ export class Storage {
                 localStorage.setItem('todos', JSON.stringify(todos))
             }, false)
             
-        //}
+        
             // INCREMENT i
             i = parseInt(i)
             i++
@@ -94,38 +97,20 @@ export class Storage {
 
     static saveLocalTodos(todo) {
         // CHECK IF TODOS ARE ALREADY SAVED
-        let todos
-        if (localStorage.getItem("todos") === null) {
-            todos = []
-        }
-        else  {
-            todos = JSON.parse(localStorage.getItem("todos"))
-        }
+        let todos = loadTodos()
         todos.push(todo)
         localStorage.setItem('todos', JSON.stringify(todos))
     }
 
     static removeLocalTodo(todoID) {
-        let todos
-        if (localStorage.getItem("todos") === null) {
-            todos = []
-        }
-        else  {
-            todos = JSON.parse(localStorage.getItem("todos"))
-        }
+        let todos = loadTodos()
         const toDoIndex = todos.map(function(x) {return x.id; }).indexOf(todoID);
         todos.splice(toDoIndex, 1)
         localStorage.setItem('todos', JSON.stringify(todos))
     }
 
     static deleteProjectTodos(projectToDelete) {
-        let todos
-        if (localStorage.getItem("todos") === null) {
-            todos = []
-        }
-        else  {
-            todos = JSON.parse(localStorage.getItem("todos"))
-        }
+        let todos = loadTodos()
         todos.forEach(function(todo) {
             if (todo.project == projectToDelete) {
                 const toDoIndex = todos.map(function(x) {return x.id; }).indexOf(todo.id);
