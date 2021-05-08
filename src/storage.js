@@ -16,7 +16,7 @@ export class Storage {
         todos.forEach(function(todo) {
             // TODO OBJECT CHANGE ID
             todo.id = i 
-            if (todo.project == 'Default Project') {
+            //if (todo.project == 'Default Project') {
             // Todo Div
             const todoDiv = document.createElement('div')
             todoDiv.classList.add('todo')
@@ -64,6 +64,13 @@ export class Storage {
             if (todo.isCompleted == true) {
                 todoDiv.classList.toggle('completed')
             }
+            // ONLY DISPLAY TODOS APART OF DEFAULT PROJECT
+            if (todo.project == 'Default Project') {
+                todoDiv.style.display = 'flex'
+            }
+            else {
+                todoDiv.style.display = 'none'
+            }
         
             // ADD LISTENER TO PRIORITY DROPDOWN 
             priorityDropdown.addEventListener('change', function(e) {
@@ -74,7 +81,7 @@ export class Storage {
                 localStorage.setItem('todos', JSON.stringify(todos))
             }, false)
             
-        }
+        //}
             // INCREMENT i
             i = parseInt(i)
             i++

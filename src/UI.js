@@ -106,40 +106,8 @@ class UI {
     }
 
     static filterTodo(e) {
-        const todos = todoList.childNodes
-        todos.forEach(function(todo) {
-            switch(e.target.value) {
-                case('all'):
-                    todo.style.display = 'flex'
-                    break
-                case('completed'):
-                    if (todo.classList.contains('completed')) {
-                        todo.style.display = 'flex'
-                    }
-                    else {
-                        todo.style.display = 'none'
-                    }
-                    break
-                case('uncompleted'):
-                    if (!todo.classList.contains('completed')) {
-                        todo.style.display = 'flex'
-                    }
-                    else {
-                        todo.style.display = 'none'
-                    }
-                    break
-    
-                
-            } 
-        })
-    }
-
-    static filterProjects(e) {
-        const projectName = e.target.value
-        
-
-        
-  
+        //const todos = todoList.childNodes
+        const projectName = filterProject.value
         let todos
         if (localStorage.getItem("todos") === null) {
             todos = []
@@ -147,19 +115,57 @@ class UI {
         else  {
             todos = JSON.parse(localStorage.getItem("todos"))
         }
-
         todos.forEach(function(todo) {
-            let Objectid = todo.id
-            let todoDivID = document.getElementById(Objectid)
             if (todo.project == projectName) {
+                let todoDivID
+                let Objectid = todo.id
+                todoDivID = document.getElementById(Objectid)
+                switch(e.target.value) {
+                    case('all'):
+                        todoDivID.style.display = 'flex'
+                        break
+                    case('completed'):
+                        if (todoDivID.classList.contains('completed')) {
+                            todoDivID.style.display = 'flex'
+                        }
+                        else {
+                            todoDivID.style.display = 'none'
+                        }
+                        break
+                    case('uncompleted'):
+                        if (!todoDivID.classList.contains('completed')) {
+                            todoDivID.style.display = 'flex'
+                        }
+                        else {
+                            todoDivID.style.display = 'none'
+                        }
+                        break
+                    
+                    
+                }
+            }
+        })
+    }
 
+    static filterProjects(e) {
+        const projectName = e.target.value
+        let todos
+        if (localStorage.getItem("todos") === null) {
+            todos = []
+        }
+        else  {
+            todos = JSON.parse(localStorage.getItem("todos"))
+        }
+        todos.forEach(function(todo) {
+            let todoDivID
+            let Objectid = todo.id
+            todoDivID = document.getElementById(Objectid)
+            if (todo.project == projectName) {
                 todoDivID.style.display = 'flex'
             }
             else {
-                todoDivID.style.display = 'none'
-                
-            }
-            
+                todoDivID.style.display = 'none'                
+            }  
         })
     }
 
