@@ -1,6 +1,5 @@
-import { todoInput, todoButton, todoList, filterOption } from './index.js'
+import { todoInput, todoButton, todoList, filterOption, filterProject } from './index.js'
 import { Todo } from './todo.js'
-
 
 export class Storage {
 
@@ -70,6 +69,10 @@ export class Storage {
             }
             else {
                 todoDiv.style.display = 'none'
+                let newProjectOption = document.createElement('option')
+                newProjectOption.value = todo.project
+                newProjectOption.innerText = todo.project
+                filterProject.appendChild(newProjectOption)
             }
         
             // ADD LISTENER TO PRIORITY DROPDOWN 

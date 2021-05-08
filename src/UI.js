@@ -187,7 +187,6 @@ class UI {
             newProjectOption.selected = 'true'
             inputProjectTextBar.remove()
             inputProjectBtn.remove()
-
         })
     }
 
