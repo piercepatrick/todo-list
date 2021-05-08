@@ -218,4 +218,14 @@ select {
 
 .input-project-text-bar {
     height: 100%;
+    border: none;
+}
+
+.input-project-btn {
+    height: 100%;
+    width: 4%;
+    border: none;
+    background: rgb(105, 105, 105);
+    color: white;
+    
 }
