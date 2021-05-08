@@ -174,6 +174,21 @@ class UI {
         inputProjectTextBar.type = 'text'
         addProjectDiv.appendChild(inputProjectTextBar)
         inputProjectTextBar.classList.add('input-project-text-bar')
+        inputProjectTextBar.placeholder = 'New Project Name'
+        const inputProjectBtn = document.createElement('button')
+        addProjectDiv.appendChild(inputProjectBtn)
+        inputProjectBtn.classList.add('input-project-btn')
+        inputProjectBtn.innerText ='Add'
+        inputProjectBtn.addEventListener('click', function() {
+            let newProjectOption = document.createElement('option')
+            newProjectOption.value = inputProjectTextBar.value
+            newProjectOption.innerText = inputProjectTextBar.value
+            filterProject.appendChild(newProjectOption)
+            newProjectOption.selected = 'true'
+            inputProjectTextBar.remove()
+            inputProjectBtn.remove()
+
+        })
     }
 
 }
