@@ -105,7 +105,7 @@ export class Storage {
         localStorage.setItem('todos', JSON.stringify(todos))
     }
 
-    static removeLocalTodo(todo, todoID) {
+    static removeLocalTodo(todoID) {
         let todos
         if (localStorage.getItem("todos") === null) {
             todos = []
@@ -118,4 +118,22 @@ export class Storage {
         localStorage.setItem('todos', JSON.stringify(todos))
     }
 
+    static deleteProjectTodos(projectToDelete) {
+        let todos
+        if (localStorage.getItem("todos") === null) {
+            todos = []
+        }
+        else  {
+            todos = JSON.parse(localStorage.getItem("todos"))
+        }
+        todos.forEach(function(todo) {
+            if (todo.project == projectToDelete) {
+                const toDoIndex = todos.map(function(x) {return x.id; }).indexOf(todo.id);
+                todos.splice(toDoIndex, 1)
+                let todoDivID = document.getElementById(todo.id)
+                todoDivID.style.display = 'none'
+            }
+        })
+        localStorage.setItem('todos', JSON.stringify(todos))
+    }
 }

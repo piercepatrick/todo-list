@@ -10,6 +10,7 @@ export const filterProject = document.querySelector('.filter-projects')
 export const addProjectBtn = document.querySelector('#add-project')
 export const projectMenuDiv = document.querySelector('.project-menu')
 export const addProjectDiv = document.querySelector('.add-project-input')
+export const deleteProjectBtn = document.querySelector('#delete-project')
 
 // Event Listeners
 document.addEventListener('DOMContentLoaded', Storage.getTodos)
@@ -18,16 +19,4 @@ todoList.addEventListener('click', UI.deleteCheck)
 filterOption.addEventListener('click', UI.filterTodo)
 filterProject.addEventListener('change', UI.filterProjects)
 addProjectBtn.addEventListener('click', UI.addProject)
-// TO DO:
-// 
-// 
-// Projects:
-// Load in on default project
-// 
-//  
-// 
-// load in all projects into select bar
-//
-// 
-//  
-
+deleteProjectBtn.addEventListener('click', UI.deleteProject)

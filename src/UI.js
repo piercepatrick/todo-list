@@ -85,7 +85,7 @@ class UI {
             
             // ANIMATION
             todo.classList.add('fall')
-            Storage.removeLocalTodo(todo, todoID)
+            Storage.removeLocalTodo(todoID)
             todo.addEventListener('transitionend', function() {
                 todo.remove()
             })
@@ -106,7 +106,6 @@ class UI {
     }
 
     static filterTodo(e) {
-        //const todos = todoList.childNodes
         const projectName = filterProject.value
         let todos
         if (localStorage.getItem("todos") === null) {
@@ -183,11 +182,57 @@ class UI {
             let newProjectOption = document.createElement('option')
             newProjectOption.value = inputProjectTextBar.value
             newProjectOption.innerText = inputProjectTextBar.value
+            newProjectOption.id = inputProjectTextBar.value
             filterProject.appendChild(newProjectOption)
             newProjectOption.selected = 'true'
             inputProjectTextBar.remove()
             inputProjectBtn.remove()
+            cancelInputProjectBtn.remove()
+            let todos
+            if (localStorage.getItem("todos") === null) {
+                todos = []
+            }
+            else  {
+                todos = JSON.parse(localStorage.getItem("todos"))
+            }
+            todos.forEach(function(todo) {
+                let todoDivID
+                let Objectid = todo.id
+                todoDivID = document.getElementById(Objectid)
+                if (todo.project == newProjectOption.value) {
+                    todoDivID.style.display = 'flex'
+                }
+                else {
+                    todoDivID.style.display = 'none'                
+                }  
+            })
         })
+        let cancelInputProjectBtn = document.createElement('button')
+        addProjectDiv.appendChild(cancelInputProjectBtn)
+        cancelInputProjectBtn.classList.add('cancel-input-project-btn')
+        cancelInputProjectBtn.innerText ='Cancel'
+        cancelInputProjectBtn.addEventListener('click', function() {
+            inputProjectTextBar.remove()
+            inputProjectBtn.remove()
+            cancelInputProjectBtn.remove()
+        })
+    }
+
+    static deleteProject() {
+        let projectToDelete = filterProject.value
+        if (projectToDelete == 'Default Project') {
+            alert('Cant Delete Default Project!')
+        }
+        else {
+           for (var j=0; j<filterProject.length; j++) {
+                if (filterProject.options[j].value == projectToDelete)
+                    filterProject.remove(j);
+                    Storage.deleteProjectTodos(projectToDelete)
+            }
+        }
+        
+        
+
     }
 
 }

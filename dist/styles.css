@@ -229,3 +229,12 @@ select {
     color: white;
     
 }
+
+.cancel-input-project-btn {
+    height: 100%;
+    width: 5%;
+    border: none;
+    background: rgb(0, 0, 0);
+    color: white;
+    
+}
